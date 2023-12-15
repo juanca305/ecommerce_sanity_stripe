@@ -4,11 +4,11 @@ import { client } from '../lib/client';
 import { FooterBanner, HeroBanner, Product } from '../components';
 
 const Home = ({products, bannerData}) => {
-  {console.log(products)}
+  //{console.log(products)}
   return (
     <>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
-      {console.log(bannerData)}
+      {/* {console.log(bannerData)} */}
 
       <div className='products-heading'>
         <h2>Best Selling Products</h2>

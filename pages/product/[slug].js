@@ -6,7 +6,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-
 import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
-  console.log(product);
+  console.log('product_1v:', product);
 
     // useEffect(() => {
     //     // This logs the value of `slug` as it changes
@@ -32,7 +32,7 @@ const ProductDetails = ({ product, products }) => {
                 </div>
                 <div className='small-images-container'>
                     {image?.map((item, i) => (
-                      <img src={urlFor(item)} className={i === index ? 'small-image selected-image' : 'small-image'} onMouseEnter={() => setIndex(i)}/>
+                      <img key={i} src={urlFor(item)} className={i === index ? 'small-image selected-image' : 'small-image'} onMouseEnter={() => setIndex(i)}/>
                     ))}
                 </div>
             </div>
@@ -93,7 +93,7 @@ export const getStaticPaths = async () => {
   }`;
 
   const products = await client.fetch(query);
-  console.log(products);
+  //console.log(products);
   const paths = products.map((product) => ({
       params: {
           slug: product.slug.current
@@ -108,7 +108,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({params: {slug}}) => {
 
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]';
+  const productsQuery = `*[_type == "product"]`;
 
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);

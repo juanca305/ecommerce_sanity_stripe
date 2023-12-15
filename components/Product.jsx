@@ -56,7 +56,7 @@ const Product = ({ product: { image, name, slug, price } }) => {
 
   useEffect(() => {
     // This logs the value of `slug` as it changes
-    console.log('value of slug:', slug);
+    //console.log('value of slug:', slug);
   }, [slug]);
 
   // This means that nothing is rendered if `slug` is undefined
