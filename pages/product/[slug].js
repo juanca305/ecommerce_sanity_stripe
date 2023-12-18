@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { client, urlFor } from '../../lib/client';
 import { Product } from '../../components';
 
@@ -20,7 +20,11 @@ const ProductDetails = ({ product, products }) => {
     const { image, name, details, price } = product;
     
     const [index, setIndex] = useState(0);
-    const { incQty, decQty, qty, onAdd, setShowCart } = useStateContext();
+    const { incQty, decQty, qty, onAdd, setShowCart, setQty } = useStateContext();
+
+    useEffect(() => { 
+      setQty(1);
+  }, []);
 
     const handleBuyNow = () => {
       onAdd(product, qty);
