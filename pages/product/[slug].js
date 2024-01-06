@@ -8,15 +8,6 @@ import { useStateContext } from '../../context/StateContext';
 const ProductDetails = ({ product, products }) => {
   console.log('product_1v:', product);
 
-    // useEffect(() => {
-    //     // This logs the value of `slug` as it changes
-    //     console.log('value of slug:', slug);
-    //   }, [slug]);
-    
-    //   // This means that nothing is rendered if `slug` is undefined
-    //   if (!slug) return null;
-
-
     const { image, name, details, price } = product;
     
     const [index, setIndex] = useState(0);
@@ -37,7 +28,6 @@ const ProductDetails = ({ product, products }) => {
             <div>
                 <div className='image-container'>
                     <img src={urlFor(image && image[index])} className="product-detail-image"/>
-                    {/* <img src={urlFor(image && image[index])} className="product-detail-image"/> */}
                 </div>
                 <div className='small-images-container'>
                     {image?.map((item, i) => (
@@ -92,8 +82,6 @@ const ProductDetails = ({ product, products }) => {
   )
 }
 
-
-
 export const getStaticPaths = async () => {
   const query = `*[_type == "product"] {
       slug {
@@ -102,7 +90,6 @@ export const getStaticPaths = async () => {
   }`;
 
   const products = await client.fetch(query);
-  //console.log(products);
   const paths = products.map((product) => ({
       params: {
           slug: product.slug.current

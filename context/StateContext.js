@@ -1,14 +1,63 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 import { toast } from 'react-hot-toast';
 
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
+    // new
+    // const initialCart = [];
+    // const initialQuantity = 0;
+    // const initialPrice = 0;
+  
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [qty, setQty] = useState(1);
+
+  //   // new
+  //   // Persisting the cart items
+  // useEffect(() => {
+  //   if (cartItems !== initialCart) {
+  //       localStorage.setItem("cart", JSON.stringify(cartItems));
+  //     }
+  //   }, [cartItems]);
+
+  // useEffect(() => {
+  //     const cartData = JSON.parse(localStorage.getItem("cart"));
+  //     if (cartData !== null & cartData !== undefined) {
+  //       console.log('cartData', cartData);
+  //     setCartItems(cartData);
+  //     }
+  //   }, [cartItems]);
+
+  // // Persisting the total quantity of the card
+  // useEffect(() => {
+  //     if (totalQuantities !== initialQuantity) {
+  //       localStorage.setItem("quantity", JSON.stringify(totalQuantities));
+  //     }
+  //   }, [totalQuantities]);
+
+  // useEffect(() => {
+  //     const cartQuantity = JSON.parse(localStorage.getItem("quantity"));
+  //     if (cartQuantity) {
+  //       setTotalQuantities(cartQuantity);
+  //     }
+  //   }, []);
+
+  // // Persisting the total price
+  // useEffect(() => {
+  //     if (totalPrice !== initialPrice) {
+  //       localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+  //     }
+  //   }, [totalPrice]);
+
+//   useEffect(() => {
+//       const cartPrice = JSON.parse(localStorage.getItem("totalPrice"));
+//       if (cartPrice) {
+//         setTotalPrice(cartPrice);
+//       }
+//     }, []);
 
     let foundProduct;
     let index;
